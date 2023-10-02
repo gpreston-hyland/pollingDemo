@@ -28,6 +28,8 @@ import { PreviewService } from './services/preview.service';
 import { appRoutes } from './app.routes';
 import { AppLayoutComponent } from './app-layout/app-layout.component';
 import { DocumentsComponent } from './documents/documents.component';
+import { MyProcessCloudService} from "./services/my-process-cloud.service";
+import { GenClaimComponent } from './gen-claim/gen-claim.component';
 
 @NgModule({
     imports: [
@@ -58,10 +60,12 @@ import { DocumentsComponent } from './documents/documents.component';
         AppLayoutComponent,
         BlobViewComponent,
         FileViewComponent,
-        DocumentsComponent
+        DocumentsComponent,
+        GenClaimComponent
     ],
     providers: [
         PreviewService,
+        MyProcessCloudService,
         {
             provide: TRANSLATION_PROVIDER,
             multi: true,

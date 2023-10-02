@@ -28,6 +28,7 @@ import { AppLayoutComponent } from './app-layout/app-layout.component';
 import { FileViewComponent } from './file-view/file-view.component';
 import { BlobViewComponent } from './file-view/blob-view.component';
 import { DocumentsComponent } from './documents/documents.component';
+import {GenClaimComponent} from './gen-claim/gen-claim.component';
 
 export const appRoutes: Routes = [
   { path: 'files/:nodeId/view', component: FileViewComponent, canActivate: [AuthGuardEcm], outlet: 'overlay' },
@@ -68,6 +69,10 @@ export const appRoutes: Routes = [
                 path: 'documents',
                 component: DocumentsComponent,
                 canActivate: [ AuthGuardEcm ]
+              },
+              {
+                path: 'gen-claim',
+                component: GenClaimComponent
               }
 
           ]

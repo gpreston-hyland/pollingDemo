@@ -14,14 +14,18 @@
                     <mat-icon matListIcon class="sidenav-menu-icon">vpn_key</mat-icon>
                     <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Login</div>
                 </a>
-                <a mat-list-item class="adf-sidenav-link" routerLink="/apps">
+                <!-- <a mat-list-item class="adf-sidenav-link" routerLink="/apps">
                     <mat-icon matListIcon class="sidenav-menu-icon">cloud</mat-icon>
                     <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Apps</div>
                 </a>
                 <a mat-list-item class="adf-sidenav-link" routerLink="/documents">
                     <mat-icon matListIcon class="sidenav-menu-icon">folder_open</mat-icon>
-                    <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Documents</div>
-                </a>
+                    <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Documents</div> 
+                </a> -->
+                <a mat-list-item class="adf-sidenav-link" routerLink="/gen-claim">
+                    <mat-icon matListIcon class="sidenav-menu-icon">whatshot</mat-icon>
+                    <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Test</div>
+                </a>                
                 <a mat-list-item adf-logout class="adf-sidenav-link">
                     <mat-icon matListIcon class="sidenav-menu-icon">exit_to_app</mat-icon>
                     <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Logout</div>

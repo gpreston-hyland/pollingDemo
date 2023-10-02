@@ -1,0 +1,25 @@
+
+<div id="loader-container" class="loader-container" *ngIf="bIsLoading">
+    <div class="loader-spinner">
+      <svg class="circular">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"></circle>
+      </svg>
+    </div>
+    <div class="loader-item">
+      <div id="loader-text" class="loader-text">Generating Claim Folder Structure...</div>
+
+    </div>
+</div>
+
+<div id="process-started" *ngIf="bIsStarted">
+    <h3>Process Started</h3>
+
+    <p>Process Id: {{processId}} - <span id="datetime"></span></p>
+</div>
+
+<div id="process-complete" *ngIf="bIsComplete">
+    <h3>Process Complete</h3>
+
+    <p>Process Id: {{processId}} - <span id="datetime"></span></p><br>
+    <p>ClaimId: {{claimId}}<br>Claim Folder: {{claimFolderName}}</p>
+</div>

@@ -1,11 +1,11 @@
 {
   "$schema": "../node_modules/@alfresco/adf-core/app.config.schema.json",
   "ecmHost": "{protocol}//{hostname}{:port}",
-  "bpmHost": "{protocol}//{hostname}{:port}",
+  "bpmHost": "https://sse-apa.dev.alfrescocloud.com",
   "identityHost": "{protocol}//{hostname}{:port}/auth/realms/alfresco",
   "providers": "ALL",
   "application": {
-    "name": "Alfresco ADF Application"
+    "name": "polling Demo"
   },
   "authType": "OAUTH",
   "oauth2": {
@@ -215,5 +215,6 @@
     }
   },
   "alfresco-deployed-apps": [
+    {"name": "claims-test"}
   ]
 }

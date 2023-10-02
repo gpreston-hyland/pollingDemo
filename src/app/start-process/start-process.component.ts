@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+// import {MyProcessCloudService } from '../services/my-process-cloud.service';
+
 
 
 @Component({
@@ -11,7 +13,9 @@ export class StartProcessComponent implements OnInit {
   appName: string = null;
 
   constructor(private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute
+              // ,private cloudService: MyProcessCloudService
+              ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
