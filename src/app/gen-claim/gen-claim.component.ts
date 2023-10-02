@@ -4,7 +4,8 @@ import { timer } from 'rxjs';
 
 import {  ProcessInstanceVariable, ProcessPayloadCloud, StartProcessCloudService,
   TaskListCloudService, ProcessTaskListCloudService,
-  TaskQueryCloudRequestModel} from '@alfresco/adf-process-services-cloud';
+  TaskQueryCloudRequestModel,
+  ProcessInstanceCloud} from '@alfresco/adf-process-services-cloud';
 
 import {MyProcessCloudService} from '../services/my-process-cloud.service';
 
@@ -35,7 +36,20 @@ export class GenClaimComponent implements OnInit {
 
   startGenClaim() {
 
-    
+    //
+    // Start APA Process
+    //
+    const _payload: ProcessPayloadCloud = new ProcessPayloadCloud( {
+      name: "Create or Get ClaimFolder",
+      processDefinitionKey: "Process_TU4VxY8T",
+      variables: {"companyName": "GPC"}
+    });
+
+    this._startProcCloud.startProcess("claims-test",_payload).subscribe((task:ProcessInstanceCloud) => {
+      this.bIsLoading = false;
+      this.bIsStarted = true;
+    })
+
   }
 
 }

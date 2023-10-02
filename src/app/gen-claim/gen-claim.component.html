@@ -14,12 +14,13 @@
 <div id="process-started" *ngIf="bIsStarted">
     <h3>Process Started</h3>
 
-    <p>Process Id: {{processId}} - <span id="datetime"></span></p>
+    <p>Process Id: {{processId}}</p>
 </div>
 
 <div id="process-complete" *ngIf="bIsComplete">
     <h3>Process Complete</h3>
 
-    <p>Process Id: {{processId}} - <span id="datetime"></span></p><br>
+    <p>Process Id: {{processId}}</p>
+    <br>
     <p>ClaimId: {{claimId}}<br>Claim Folder: {{claimFolderName}}</p>
 </div>
