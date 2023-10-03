@@ -58,13 +58,6 @@ module.exports = {
         "changeOrigin": true,
         "logProvider": logProvider,
         "logLevel": "debug"
-    },
-    "/claims-test": {
-        "target": "https://sse-apa.dev.alfrescocloud.com",
-        "secure": true,
-        "changeOrigin": true,
-        "logProvider": logProvider,
-        "logLevel": "debug"
     }
 
 }

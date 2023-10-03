@@ -72,7 +72,8 @@ export const appRoutes: Routes = [
               },
               {
                 path: 'gen-claim',
-                component: GenClaimComponent
+                component: GenClaimComponent,
+                canActivate: [AuthGuardBpm]
               }
 
           ]

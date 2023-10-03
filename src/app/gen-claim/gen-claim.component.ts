@@ -31,7 +31,7 @@ export class GenClaimComponent implements OnInit {
 
   ngOnInit(): void {
     this.bIsLoading = true;
-    // this.startGenClaim();
+    this.startGenClaim();
   }
 
   startGenClaim() {
@@ -45,10 +45,17 @@ export class GenClaimComponent implements OnInit {
       variables: {"companyName": "GPC"}
     });
 
-    this._startProcCloud.startProcess("claims-test",_payload).subscribe((task:ProcessInstanceCloud) => {
+    this._startProcCloud.startProcess("claims-test",_payload).subscribe((proc:ProcessInstanceCloud) => {
       this.bIsLoading = false;
       this.bIsStarted = true;
+      this.processId = proc.id;
     })
+    // this.bIsStarted = true;
+
+    timer(3000).subscribe(x => {
+      this.claimId = "not set";
+      this.claimFolderName = "/blah/blah/blah";
+    } );
 
   }
 
