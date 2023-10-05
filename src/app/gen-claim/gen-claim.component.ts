@@ -8,7 +8,7 @@ import {  ProcessInstanceVariable, ProcessPayloadCloud, StartProcessCloudService
   ProcessInstanceCloud} from '@alfresco/adf-process-services-cloud';
 
 import {MyProcessCloudService} from '../services/my-process-cloud.service';
-import { repeat, switchMap, takeWhile, tap } from 'rxjs/operators';
+import { last, repeat, switchMap, takeWhile, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-gen-claim',
@@ -55,16 +55,15 @@ export class GenClaimComponent implements OnInit {
 
     this._startProcCloud.startProcess("claims-test",_payload).subscribe(
       (proc:ProcessInstanceCloud) => {
-        this.bIsLoading = false;
-        this.tsStart = new Date().toISOString();
-        this.bIsStarted = true; 
-        this.processId = proc.id;
+        this.bIsLoading = false; this.tsStart = new Date().toISOString();
+        this.bIsStarted = true;  this.processId = proc.id;
         console.log("********************* Task Started:", JSON.stringify(proc));
         let n:number=0;
         timer(0,250).pipe(       
           tap(() => console.log("iteration: ",++n," at ", new Date().toISOString())),
           switchMap(_ => this._procCloudService.getProcessInstanceById("claims-test",this.processId)),
-          takeWhile(p => p.status !== 'COMPLETED',true)
+          takeWhile(p => p.status !== 'COMPLETED',true),
+          last()
         ).subscribe(
           result => {
             console.log("******************** create claim completed... Get variables");
@@ -84,3 +83,5 @@ export class GenClaimComponent implements OnInit {
   }
 
 }
+
+

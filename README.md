@@ -62,8 +62,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
       ]
       ```
 
-1. The [global-values.service](src/app/services/global-values.service.ts) contains values shared among components. Names of APA process/tasks/etc. are there so I don't have to update multiple places when testing.
-
 ### Proxy settings
 
 The template provides certain proxy settings to allow running web application locally without CORS setup.
@@ -87,3 +85,21 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Results
+
+All the work happens in the [gen-claim](./src/app/gen-claim/) component.
+
+<img src="./readme-assets/pollingDemo.png" width="40%"/>
+
+The 'polling' action is in lines 62 - 67.
+
+<img src="./readme-assets/polling-src.png" width="75%"/>
+
+Once the process is started,
+
+* Use [timer](https://rxjs.dev/api/index/function/timer) to emit an observable immediately and then every 250ms.
+* [switchMap](https://rxjs.dev/api/index/function/switchMap) invokes `getProcessInstanceById()`, returning the inner observable.
+* The [takeWhile](https://rxjs.dev/api/index/function/takeWhile) re-emits as long as the condition is satisfied.
+* And finally the [last](https://rxjs.dev/api/index/function/last) operator consumes all but the last inner observable.
+* Once the `getProcessInstanceById()` emits its last, the subscription on line 67 satisfied and the overall process continues to grab the final process variables from the completed process instance.
